@@ -51,8 +51,8 @@ This plug-in supports using generic callbacks for inter-plug-in communication. S
 ```cpp
 std::string bzdbLock = bz_getclipFieldString("allejo/bzdbLock");
 
-std::string variable = "_worldSize";
-void* data = teamPair;
+std::string variableName = "_worldSize";
+void* data = variableName;
 int response = bz_callPluginGenericCallback(bzdbLock.c_str(), "isBZDBVarLocked", data);
 ```
 
