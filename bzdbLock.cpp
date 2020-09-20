@@ -76,6 +76,7 @@ void BZDBLock::Init(const char* config)
     // Namespace our clip fields to avoid plug-in conflicts
     bz_setclipFieldString("allejo/bzdbLock", Name());
 
+    bz_registerCustomSlashCommand("bzdblock", this);
     bz_registerCustomSlashCommand("reload", this);
     bz_registerCustomSlashCommand("set", this);
 
@@ -93,6 +94,7 @@ void BZDBLock::Cleanup()
 {
     Flush();
 
+    bz_removeCustomSlashCommand("bzdblock");
     bz_removeCustomSlashCommand("reload");
     bz_removeCustomSlashCommand("set");
 }
@@ -118,13 +120,45 @@ int BZDBLock::GeneralCallback(const char* name, void* data)
 
 bool BZDBLock::SlashCommand(int playerID, bz_ApiString command, bz_ApiString /*message*/, bz_APIStringList *params)
 {
-    if (command == "reload" && bz_hasPerm(playerID, "setAll"))
+    if (command == "bzdblock")
+    {
+        if (!bz_hasPerm(playerID, "setAll"))
+        {
+            return true;
+        }
+
+        if (params->size() == 0)
+        {
+            bz_sendTextMessagef(BZ_SERVER, playerID, "Usage: /%s [list]", command.c_str());
+
+            return true;
+        }
+
+        auto subCommand = params->get(0);
+
+        if (subCommand == "list")
+        {
+            bz_sendTextMessagef(BZ_SERVER, playerID, "The following variables can%s be changed:", whitelistMode ? "" : "not");
+
+            for (auto variable : bzdbWatchList)
+            {
+                bz_sendTextMessagef(BZ_SERVER, playerID, " - %s", variable.c_str());
+            }
+        }
+        else
+        {
+            bz_sendTextMessagef(BZ_SERVER, playerID, "Unknown subcommand: %s", subCommand.c_str());
+        }
+
+        return true;
+    }
+    else if (command == "reload" && bz_hasPerm(playerID, "setAll"))
     {
         if (params->size() == 0)
         {
             loadConfiguration();
         }
-        else if (params->get(0) == "bzdbLockList")
+        else if (params->get(0) == "bzdblocklist")
         {
             loadConfiguration();
             bz_sendTextMessage(BZ_SERVER, playerID, "BZDB lock list reloaded");
