@@ -40,9 +40,9 @@ _worldSize=0
 
 | Command | Permission | Description |
 | ------- | ---------- | ----------- |
-| `/bzdblock [list]` | setAll | Lists all of the variables that can or cannot be modified depending on the mode the plugin is in. |
-| `/set <param>` | setAll | Overrides the command to disable setting locked variables only. |
-| `/reload [all|bzdbLockList]` | setAll | Re-read the configuration file to load the BZDB lock list. |
+| <code>/bzdblock&nbsp;[list]</code> | setAll | Lists all of the variables that can or cannot be modified depending on the mode the plugin is in. |
+| <code>/set&nbsp;&lt;param&gt;</code> | setAll | Overrides the command to disable setting locked variables only. |
+| <code>/reload&nbsp;[all\|bzdbLockList]</code> | setAll | Re-read the configuration file to load the BZDB lock list. |
 
 ### Inter-Plug-in Communication
 
