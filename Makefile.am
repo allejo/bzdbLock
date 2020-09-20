@@ -12,8 +12,8 @@ AM_CXXFLAGS = $(CONF_CXXFLAGS)
 EXTRA_DIST = \
 	LICENSE.md \
 	README.md \
+	bzdbLock.cfg \
 	bzdbLock.def \
-	bzdbLock.ini \
 	bzdbLock.sln \
 	bzdbLock.vcxproj \
 	bzdbLock.vcxproj.filters
