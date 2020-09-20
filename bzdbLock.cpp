@@ -157,8 +157,13 @@ bool BZDBLock::SlashCommand(int playerID, bz_ApiString command, bz_ApiString /*m
         if (params->size() == 0)
         {
             loadConfiguration();
+
+            return false;
         }
-        else if (params->get(0) == "bzdblocklist")
+
+        std::string subCommand = bz_tolower(params->get(0).c_str());
+
+        if (subCommand == "bzdblocklist")
         {
             loadConfiguration();
             bz_sendTextMessage(BZ_SERVER, playerID, "BZDB lock list reloaded");
