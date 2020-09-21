@@ -31,8 +31,8 @@ const std::string PLUGIN_NAME = "BZDB Lock List";
 // Define plugin version numbering
 const int MAJOR = 1;
 const int MINOR = 0;
-const int REV = 0;
-const int BUILD = 1;
+const int REV = 1;
+const int BUILD = 8;
 
 typedef std::pair<std::string, std::string> KeyValue;
 typedef std::vector<KeyValue> KeyValuePairs;
