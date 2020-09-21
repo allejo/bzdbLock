@@ -112,7 +112,7 @@ int BZDBLock::GeneralCallback(const char* name, void* data)
     {
         auto variable = static_cast<std::string*>(data);
 
-        return (bool)isLocked(*variable);
+        return (int)isLocked(*variable);
     }
 
     return -9999;
