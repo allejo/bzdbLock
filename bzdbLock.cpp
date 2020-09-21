@@ -44,7 +44,7 @@ public:
     virtual void Init(const char* config);
     virtual void Cleanup();
     virtual int GeneralCallback(const char* name, void* data);
-    virtual void Event(bz_EventData* eventData) {};
+    virtual void Event(bz_EventData* /* eventData */) {};
     virtual bool SlashCommand(int playerID, bz_ApiString command, bz_ApiString /*message*/, bz_APIStringList *params);
 
 private:
