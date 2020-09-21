@@ -124,6 +124,8 @@ bool BZDBLock::SlashCommand(int playerID, bz_ApiString command, bz_ApiString /*m
     {
         if (!bz_hasPerm(playerID, "setAll"))
         {
+            bz_sendTextMessagef(BZ_SERVER, playerID, "You do not have permission to run the /%s command", command.c_str());
+
             return true;
         }
 
