@@ -154,7 +154,7 @@ bool BZDBLock::SlashCommand(int playerID, bz_ApiString command, bz_ApiString /*m
     }
     else if (command == "reload" && bz_hasPerm(playerID, "setAll"))
     {
-        if (params->size() == 0)
+        if (params->size() == 0 || params->get(0) == "all")
         {
             loadConfiguration();
 
